@@ -137,7 +137,7 @@ public class AsyncLoader extends AsyncTaskLoader< ArrayList<Books> > {
 
                 Log.v("Book",title + " " + author + " " + url );
 
-                arrayList.add(new Books(title,author,url));
+                arrayList.add(new Books(title,url));
             }
 
 

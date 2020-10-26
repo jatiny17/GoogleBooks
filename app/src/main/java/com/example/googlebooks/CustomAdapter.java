@@ -26,13 +26,10 @@ public class CustomAdapter extends ArrayAdapter<Books> {
         if(listItem == null)
             listItem = LayoutInflater.from(getContext()).inflate(R.layout.list_item,parent,false);
 
-        TextView textView1,textView2;
+        TextView textView1;
 
         textView1 = (TextView)listItem.findViewById(R.id.title);
-        textView2 = (TextView)listItem.findViewById(R.id.author);
-
-        textView1.setText(getItem(position).getAuthor());
-        textView2.setText(getItem(position).getTitle());
+        textView1.setText(getItem(position).getTitle());
 
         return listItem;
     }

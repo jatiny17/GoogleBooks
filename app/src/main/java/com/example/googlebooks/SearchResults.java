@@ -10,6 +10,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,6 +32,15 @@ public class SearchResults extends AppCompatActivity implements LoaderManager.Lo
         listView = (ListView)findViewById(R.id.listView);
         customAdapter = new CustomAdapter(this,new ArrayList<Books>());
         listView.setAdapter(customAdapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(customAdapter.getItem(i).getUrl()));
+                startActivity(browserIntent);
+            }
+        });
 
         String temp = getIntent().getStringExtra("key");
 

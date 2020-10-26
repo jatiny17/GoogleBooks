@@ -126,6 +126,8 @@ public class Loader extends AsyncTaskLoader< ArrayList<Books> > {
             return arrayList;
 
         try {
+            arrayList = new ArrayList<Books>();
+
             JSONObject jsonObject = new JSONObject(jsonSring);
             JSONArray jsonArray = jsonObject.optJSONArray("items");
 
@@ -133,12 +135,11 @@ public class Loader extends AsyncTaskLoader< ArrayList<Books> > {
             {
                 JSONObject temp = jsonArray.getJSONObject(i).getJSONObject("volumeInfo");
                 String title = temp.optString("title");
-                String author = temp.getJSONArray("authors").getString(0);
                 String url = temp.optString("infoLink");
 
-                Log.v("Book",title + " " + author + " " + url );
+                Log.v("Book",title + " " + url );
 
-                arrayList.add(new Books(title,author,url));
+                arrayList.add(new Books(title,url));
             }
 
 
